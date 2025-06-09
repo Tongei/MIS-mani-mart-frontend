@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏪 Mini Mart POS System - Reports</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏪 Mini Mart POS System</h1>
+            <div class="nav-tabs">
+                <a href="index.html" class="tab-button">💳 Point of Sale</a>
+                <a href="inventory.html" class="tab-button">📦 Inventory</a>
+                <a href="stock.html" class="tab-button">📥 Product in Stock</a>
+                <a href="reports.html" class="tab-button active">📊 Reports</a>
+                <a href="settings.html" class="tab-button">⚙️ Settings</a>
+            </div>
+        </div>
+
+        <div id="reports" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="todaySales">$0</div>
+                    <div class="stat-label">Today's Sales</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalTransactions">0</div>
+                    <div class="stat-label">Transactions Today</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="topProduct">-</div>
+                    <div class="stat-label">Top Selling Product</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="lowStock">0</div>
+                    <div class="stat-label">Low Stock Items</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalProfit">$0</div>
+                    <div class="stat-label">Today's Profit</div>
+                </div>
+            </div>
+            <h2>📈 Recent Transactions</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        <th>Payment Method</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionTable"></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

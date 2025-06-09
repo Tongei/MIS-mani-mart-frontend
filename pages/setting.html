@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏪 Mini Mart POS System - Settings</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏪 Mini Mart POS System</h1>
+            <div class="nav-tabs">
+                <a href="index.html" class="tab-button">💳 Point of Sale</a>
+                <a href="inventory.html" class="tab-button">📦 Inventory</a>
+                <a href="stock.html" class="tab-button">📥 Product in Stock</a>
+                <a href="reports.html" class="tab-button">📊 Reports</a>
+                <a href="settings.html" class="tab-button active">⚙️ Settings</a>
+            </div>
+        </div>
+
+        <div id="settings" class="tab-content active">
+            <div class="form-grid">
+                <div>
+                    <h2>🏪 Store Information</h2>
+                    <form id="storeForm" onsubmit="saveStoreSettings(event)">
+                        <div class="form-group">
+                            <label for="storeName">Store Name</label>
+                            <input type="text" id="storeName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="storeAddress">Address</label>
+                            <input type="text" id="storeAddress" class="form-control" value="123 Main Street, City, State 12345">
+                        </div>
+                        <div class="form-group">
+                            <label for="storePhone">Phone</label>
+                            <input type="tel" id="storePhone" class="form-control">
+                        </div>
+                        <button type="submit" class="btn">Save Settings</button>
+                    </form>
+                </div>
+                <div>
+                    <h2>💰 Tax & Payment Settings</h2>
+                    <form id="paymentForm" onsubmit="updatePaymentSettings(event)">
+                        <div class="form-group">
+                            <label for="taxRate">Tax Rate (%)</label>
+                            <input type="number" id="taxRate" class="form-control" step="0.01" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="currency">Currency</label>
+                            <select id="currency" class="form-control">
+                                <option value="USD">USD ($)</option>
+                                <option value="EUR">EUR (€)</option>
+                                <option value="GBP">GBP (£)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="lowStockAlert">Low Stock Alert</label>
+                            <input type="number" id="lowStockAlert" class="form-control" min="0">
+                        </div>
+                        <button type="submit" class="btn">Update Settings</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

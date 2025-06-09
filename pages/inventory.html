@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏪 Mini Mart POS System - Inventory</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏪 Mini Mart POS System</h1>
+            <div class="nav-tabs">
+                <a href="index.html" class="tab-button">💳 Point of Sale</a>
+                <a href="inventory.html" class="tab-button active">📦 Inventory</a>
+                <a href="stock.html" class="tab-button">📥 Product in Stock</a>
+                <a href="reports.html" class="tab-button">📊 Reports</a>
+                <a href="settings.html" class="tab-button">⚙️ Settings</a>
+            </div>
+        </div>
+
+        <div id="inventory" class="tab-content active">
+            <div class="form-grid">
+                <div>
+                    <h2>➕ Add New Product</h2>
+                    <form id="productForm" onsubmit="addProduct(event)">
+                        <div class="form-group">
+                            <label for="productName">Product Name</label>
+                            <input type="text" id="productName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Price ($)</label>
+                            <input type="number" id="productPrice" class="form-control" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productStock">Stock Quantity</label>
+                            <input type="number" id="productStock" class="form-control" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Category</label>
+                            <select id="productCategory" class="form-control">
+                                <option value="Beverages">Beverages</option>
+                                <option value="Snacks">Snacks</option>
+                                <option value="Dairy">Dairy</option>
+                                <option value="Bakery">Bakery</option>
+                                <option value="Personal Care">Personal Care</option>
+                                <option value="Household">Household</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Add Product</button>
+                    </form>
+                </div>
+                <div>
+                    <h2>📋 Product List</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
