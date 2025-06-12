@@ -488,7 +488,7 @@ function updatePaymentSettings(event) {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    checkLogin();
+    // checkLogin();
     
     updateProductGrid();
     updateInventoryTable();
