@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🏪 Mini Mart POS System - Inventory</title>
     <link rel="stylesheet" href="../style.css">
-    <script src="../script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -15,58 +14,67 @@
                 <a href="../index.html" class="tab-button">💳 Point of Sale</a>
                 <a href="inventory.html" class="tab-button active">📦 Inventory</a>
                 <a href="stock.html" class="tab-button">📥 Product in Stock</a>
-                <a href="reports.html" class="tab-button">📊 Reports</a>
+                <a href="report.html" class="tab-button">📊 Reports</a>
                 <a href="settings.html" class="tab-button">⚙️ Settings</a>
+                <button onclick="ApiService.logout()" class="tab-button" style="background: linear-gradient(45deg, #dc2626, #b91c1c);">🚪 Logout</button>
             </div>
         </div>
 
         <div id="inventory" class="tab-content active">
             <div class="form-grid">
                 <div>
-                    <h2>➕ Add New Product</h2>
-                    <form id="productForm" onsubmit="addProduct(event)">
+                    <h2>➕ Add Product to Inventory</h2>
+                    <p style="color: #6b7280; margin-bottom: 20px;">Select a stock product and set sale price and quantity</p>
+                    <form id="inventoryForm" onsubmit="addInventoryProduct(event)">
                         <div class="form-group">
-                            <label for="productName">Product Name</label>
-                            <input type="text" id="productName" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="productPrice">Price ($)</label>
-                            <input type="number" id="productPrice" class="form-control" step="0.01" min="0" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="productStock">Stock Quantity</label>
-                            <input type="number" id="productStock" class="form-control" min="0" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="productCategory">Category</label>
-                            <select id="productCategory" class="form-control">
-                                <option value="Beverages">Beverages</option>
-                                <option value="Snacks">Snacks</option>
-                                <option value="Dairy">Dairy</option>
-                                <option value="Bakery">Bakery</option>
-                                <option value="Personal Care">Personal Care</option>
-                                <option value="Household">Household</option>
+                            <label for="inventoryStockProduct">Stock Product</label>
+                            <select id="inventoryStockProduct" class="form-control" required>
+                                <option value="">Select a stock product...</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn">Add Product</button>
+                        <div class="form-group">
+                            <label for="inventorySalePrice">Sale Price ($)</label>
+                            <input type="number" id="inventorySalePrice" class="form-control" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inventorySaleQuantity">Sale Quantity</label>
+                            <input type="number" id="inventorySaleQuantity" class="form-control" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inventoryDiscount">Discount (0.0 to 1.0, e.g., 0.1 for 10%)</label>
+                            <input type="number" id="inventoryDiscount" class="form-control" step="0.01" min="0" max="1" value="0">
+                        </div>
+                        <button type="submit" class="btn">Add to Inventory</button>
                     </form>
                 </div>
+                
                 <div>
-                    <h2>📋 Product List</h2>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="inventoryTable"></tbody>
-                    </table>
+                    <h2>📋 Inventory Products</h2>
+                    <div class="table-container" style="max-height: 500px; overflow-y: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Sale Price</th>
+                                    <th>Discount</th>
+                                    <th>Final Price</th>
+                                    <th>Quantity</th>
+                                    <th>Category</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTable">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; padding: 20px;">Loading inventory...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="../script.js"></script>
 </body>
 </html>

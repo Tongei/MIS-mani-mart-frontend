@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🏪 Mini Mart POS System - Point of Sale</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js" defer></script>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>🏪 Mini Mart POS System</h1>
             <div class="nav-tabs">
-                <a href="login.html" class="tab-button active">💳 Point of Sale</a>
+                <a href="index.html" class="tab-button active">💳 Point of Sale</a>
                 <a href="./pages/inventory.html" class="tab-button">📦 Inventory</a>
                 <a href="./pages/stock.html" class="tab-button">📥 Product in Stock</a>
                 <a href="./pages/report.html" class="tab-button">📊 Reports</a>
                 <a href="./pages/settings.html" class="tab-button">⚙️ Settings</a>
+                <button onclick="ApiService.logout()" class="tab-button" style="background: linear-gradient(45deg, #dc2626, #b91c1c);">🚪 Logout</button>
             </div>
         </div>
 
@@ -24,7 +24,9 @@
             <div class="pos-layout">
                 <div>
                     <input type="text" class="search-box" id="productSearch" placeholder="Search products..." oninput="searchProducts(this.value)">
-                    <div class="product-grid" id="productGrid"></div>
+                    <div class="product-grid" id="productGrid">
+                        <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #6b7280;">Loading products...</div>
+                    </div>
                 </div>
 
                 <div class="cart-panel">
@@ -36,7 +38,7 @@
                     </div>
                     <div class="cart-total">
                         <div class="total-amount" id="totalAmount">$0.00</div>
-                        <div>Total Amount</div>
+                        <div>Total Amount (incl. tax)</div>
                     </div>
                     <button class="checkout-btn" onclick="checkout()">💰 Checkout</button>
                     <button class="btn btn-danger" onclick="clearCart()">🗑️ Clear Cart</button>
@@ -45,6 +47,7 @@
         </div>
     </div>
 
+    <!-- Checkout Modal -->
     <div id="checkoutModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -69,5 +72,7 @@
             <button class="checkout-btn" onclick="completeSale()">Complete Sale</button>
         </div>
     </div>
+
+    <script src="./script.js"></script>
 </body>
 </html>
